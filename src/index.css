@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-white: #fbfbfb;
+  --color-dark: #000
+}
+
+body {
+  background: var(--color-dark);
+
+  color: var(--color-dark);
+
+  overflow: hidden;
+}

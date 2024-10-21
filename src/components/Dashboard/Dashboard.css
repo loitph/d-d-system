@@ -1,0 +1,7 @@
+.dashboard {
+  border-top: 1px solid hsla(0, 0%, 100%, .14);
+  border-bottom: 1px solid hsla(0, 0%, 100%, .14);
+  height: calc(100vh - 200px);
+
+  overflow: hidden;
+}
