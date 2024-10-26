@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LIST_CARD_DEFAULT, USER_DATA } from "../constant/mockup";
+import { BLANK_USER, BLANK_USER_CONFIG, USER_CONFIG, USER_DATA } from "../constant/mockup";
 
 // Token generation function using the Web Crypto API (works in browser)
 const generateToken = async (inputText) => {
@@ -29,6 +29,7 @@ const register = (username, password) => {
   return axios.post(URL, data);
 };
 
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const fakeLogin = async (data) => {
   const db = [...USER_DATA];
@@ -37,27 +38,32 @@ const fakeLogin = async (data) => {
     i.password === data.password);
 
   // simulate delay
-  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-  await delay(250);
+  await delay(210);
 
   if (exist) {
     return {
       data: {
+        id: exist.id,
         username: exist.username,
         token: exist.token,
-        configure: exist.configure
       },
     }
   } else {
     return {
       data: {
+        id: '',
         username: '',
         token: '',
-        configure: []
       },
     };
   }
 };
+
+const generateUUIDv4 = () => {
+  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+  );
+}
 
 const fakeRegister = async (data) => {
   let newUser = data;
@@ -65,20 +71,33 @@ const fakeRegister = async (data) => {
   // generate token
   const code = await generateToken(data.username);
 
+  newUser.id = generateUUIDv4();
   newUser.token = code;
-  newUser.configure = LIST_CARD_DEFAULT;
 
   USER_DATA.push(newUser);
 
   return {
     data: {
+      id: newUser.id,
       username: newUser.username,
       token: newUser.token,
-      configure: newUser.configure
     },
   };
 };
 
+const fakeGetUserConfig = async (userId) => {
+  const res = USER_CONFIG.find(u => u.id === userId);
 
-export { fakeLogin, fakeRegister };
+  // simulate delay
+  await delay(210);
+
+  return res || {
+    id: userId,
+    board: [],
+    widget: []
+  };
+};
+
+
+export { fakeLogin, fakeRegister, fakeGetUserConfig };
 

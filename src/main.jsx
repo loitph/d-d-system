@@ -2,7 +2,6 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import { StorageProvider } from './contexts/Storage.context.jsx'
 
 import {
   createBrowserRouter,
@@ -12,16 +11,22 @@ import Login from './components/Auth/Login/Login.jsx'
 import Register from './components/Auth/Register/Register.jsx'
 import { AuthProvider } from './contexts/Auth.context.jsx'
 import Dashboard from './components/Dashboard/Dashboard.jsx'
+import ErrorPage from './components/ErrorPage/ErrorPage.jsx'
+import { StoreProvider } from './contexts/Store.context.jsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: null,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
-        element: <Dashboard />
+        element: (
+          <StoreProvider>
+            <Dashboard />
+          </StoreProvider>
+        )
       },
       {
         path: "/login",
@@ -31,15 +36,6 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register />
       },
-      // {
-      //   path: '',
-      //   element: (
-      //     <PrivateRoute>
-      //       DetailPage
-
-      //     </PrivateRoute>
-      //   )
-      // }
     ]
   },
   {
@@ -53,13 +49,9 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById('root')).render(
-  // <StorageProvider>
-    // <App />
-  // </StorageProvider>
-
-  <AuthProvider>
-    <RouterProvider router={router} />
-  </AuthProvider>
-  // <StrictMode>
-  // </StrictMode>,
+  <StrictMode>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  </StrictMode>,
 )

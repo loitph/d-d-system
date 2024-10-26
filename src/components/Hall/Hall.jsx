@@ -1,89 +1,41 @@
 import './Hall.css';
 
-import { useEffect, useState } from 'react';
-import { LIST_CARD_DEFAULT, SLOTS } from '../../constant/mockup';
-import { useStorage } from '../../contexts/Storage.context';
+import { useContext, useEffect, useState } from 'react';
+import { ADD_WIDGET, LIST_CARD_DEFAULT, SLOTS } from '../../constant/mockup';
+import { StoreContext } from '../../contexts/Store.context';
+import Greeting from '../Greeting/Greeting';
+import ModeDisplay from '../ModeDisplay/ModeDisplay';
+import AddWidget from '../AddWidget/AddWidget';
 
-export default function Hall({ receiveOrder }) {
-  const { storage, updateStorage } = useStorage();
-
-  const listSlot = SLOTS;
-
-  const listCard = LIST_CARD_DEFAULT;
-
-  // handle list card
-  const [ cards, setCards ] = useState(listCard);
-
-  // Drag start
-  // using useState to allow tranfer data greater than event.dataTransfer
-  const handleDragStart = (event, card) => {
-
-    const data = storage;
-
-    data.id = card.id;
-    data.slot = card.slot;
-    data.value = card.value;
-
-    updateStorage(data)
-  };
-
-
-  const handleClick = (card) => {
-    const data = storage;
-
-    data.id = card.id;
-    data.slot = card.slot;
-    data.value = card.value;
-
-    updateStorage(data)
-
-    console.log(data);
-  };
-
-  const handleAfterDrop = (selectedId) => {
-    const newCards = cards.filter(c => c.id !== selectedId);
-
-    setCards([...newCards]);
-  };
+export default function Hall() {
+  const { userConfig, setUserConfig } = useContext(StoreContext);
+  const [ hallItems, setHallItems ] = useState([]);
 
   useEffect(() => {
-    if (!receiveOrder?.curr || !receiveOrder?.target || !receiveOrder?.data?.id) {
+    if (!userConfig?.id) {
       return;
     }
 
-    handleAfterDrop(receiveOrder.data.id);
-  }, [receiveOrder]);
+    let items = [...userConfig.widget].filter(i => i.type !== 'AddWidget');
+    items.push(ADD_WIDGET);
 
+    setHallItems(items);
+  }, [userConfig]);
 
   return (
     <>
-      <div className="slots hall">
+      <div className="hall" onDragOver={(e) => {e.preventDefault()}}>
         {
-          listSlot.map((slotPiece) => (
-            <div
-              className="slot"
-              key={slotPiece}
-            >
-              {
-                cards
-                  .filter((card) => card.slot === slotPiece)
-                  .map((card) => (
-                    <div
-                      key={card.id}
-                      className="card"
-
-                      // this make card are draggable
-                      draggable
-                      onDragStart={(e) => handleDragStart(e, card)}
-
-                      onClick={() => handleClick(card)}
-                    >
-                      { card.value }
-                    </div>
-                  ))
-              }
-            </div>
-          ))
+          hallItems.map(item => {
+            switch (item.type) {
+              case 'Greeting':
+                return <Greeting key={item.id} data={item} class={'card view-only'} />;
+              case 'ModeDisplay':
+                return <ModeDisplay key={item.id} data={item} class={'card view-only'} />;
+              case 'AddWidget':
+                return <AddWidget key={item.id} data={item} class={'card view-only'} />;
+            }
+          })
         }
       </div>
     </>

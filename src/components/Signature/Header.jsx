@@ -12,6 +12,7 @@ const Header = () => {
   const onLogout = () => {
     localStorage.removeItem("access_token");
     localStorage.removeItem("username");
+    localStorage.removeItem("user_id");
 
     setAuth(BLANK_AUTH);
     setNameUser('');

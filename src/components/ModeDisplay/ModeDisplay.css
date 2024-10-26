@@ -1,0 +1,5 @@
+.preview-only.mode-display-container,
+.view-only.mode-display-container button[role="switch"] {
+  user-select: none;
+  pointer-events: none;
+}

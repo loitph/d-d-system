@@ -1,0 +1,108 @@
+.dialog-widget-container .dialog-mask {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  position: absolute;
+  left: 0;
+  backdrop-filter: saturate(180%) blur(7px);
+  z-index: 9998;
+}
+
+.dialog-widget-container .dialog-content {
+  z-index: 9999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  backdrop-filter: saturate(180%);
+  background: rgb(25 25 25 / 87%);
+  color: white;
+  width: 450px;
+  height: 250px;
+
+  height: 350px;
+  border-radius: 24px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dialog-widget-container .dialog-footer,
+.dialog-widget-container .dialog-header {
+  display: flex;
+  justify-content: space-between;
+  background: rgb(255 255 255 / 30%);
+  padding: 1em;
+}
+
+.dialog-widget-container .dialog-header {
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  border-bottom: 1px solid #f0f0f075;
+}
+
+.dialog-widget-container .dialog-main {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.dialog-widget-container .dialog-footer {
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  border-top: 1px solid #f0f0f075;
+  justify-content: flex-end ;
+  gap: .25em;
+}
+
+.dialog-widget-container .btn {
+  width: 110px;
+  height: 2.5em;
+  border-radius: .8em;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.dialog-widget-container .btn-save {
+  background: beige;
+}
+
+.dialog-widget-container .btn-save:hover {
+  background: bisque;
+}
+
+.dialog-widget-container .btn-cancel {
+  background: ghostwhite;
+}
+
+.dialog-widget-container .btn-cancel:hover {
+  background: gainsboro;
+}
+
+.dialog-widget-container .widget-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dialog-widget-container .section {
+  width: 50%;
+  display: flex;
+}
+
+.dialog-widget-container .section.type {
+  gap: .5em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.dialog-widget-container .section.type select {
+  border-radius: 24px;
+  width: 100%;
+  padding: .5em;
+}
+
+.dialog-widget-container .section.type-value {
+  justify-content: center;
+}

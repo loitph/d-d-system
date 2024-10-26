@@ -1,0 +1,24 @@
+.mover-container .mover-title {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: .75em;
+  color: lightslategray;
+}
+
+.mover-container .mover-title .btn-mover-delete,
+.mover-container .mover-title .btn-mover-edit {
+  cursor: pointer;
+}
+
+.mover-container .mover-title p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 70%;
+}
+
+.mover-container .btn-mover-adjust {
+  display: flex;
+  gap: .5em;
+}

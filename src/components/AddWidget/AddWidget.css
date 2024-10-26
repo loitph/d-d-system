@@ -1,0 +1,17 @@
+.add-widget-container,
+.add-widget-container:hover {
+  cursor: pointer !important;
+}
+
+.card.view-only.add-widget-container {
+  background: rgb(228 228 228 / 75%) !important;
+  justify-content: center;
+}
+
+.card.view-only.add-widget-container:hover {
+  background: rgb(228, 228, 228) !important;
+}
+
+.card.view-only.add-widget-container span {
+  font-size: 1.85em;
+}

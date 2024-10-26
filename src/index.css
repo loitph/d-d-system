@@ -10,8 +10,36 @@
 
 body {
   background: var(--color-dark);
-
   color: var(--color-dark);
 
   overflow: hidden;
+}
+
+.light-mode {
+  background: var(--color-white);
+  color: var(--color-dark);
+}
+
+.light-mode .title > h1 {
+  color: var(--color-dark);
+}
+
+.light-mode .board .title > .label,
+.light-mode .board .title > .label nav a  {
+  color: var(--color-dark);
+}
+
+.light-mode .dashboard {
+  border-top: 1px solid hsl(0, 0%, 0%);
+  border-bottom: 1px solid hsl(0, 0%, 0%);
+}
+
+.light-mode .slots,
+.light-mode .hall {
+  background: #bababa;
+  color: black;
+}
+
+.light-mode .hall {
+  border-left: 1px solid black;
 }

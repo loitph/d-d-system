@@ -43,6 +43,7 @@ const Register = () => {
         message.success("Register successfully");
         localStorage.setItem('access_token', newRes.data.token);
         localStorage.setItem('username', newRes.data.username);
+        localStorage.setItem('user_id', newRes.data.id);
 
         setAuth(newRes.data);
         navigate('/');

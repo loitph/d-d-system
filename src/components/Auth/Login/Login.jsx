@@ -40,14 +40,13 @@ const Login = () => {
       message.success("Login successfully");
       localStorage.setItem('access_token', res.data.token);
       localStorage.setItem('username', res.data.username);
+      localStorage.setItem('user_id', res.data.id);
 
       await setAuth({
+        id: res.data.id,
         username: res.data.username,
         token: res.data.token,
-        configure: res.data.configure
       });
-
-      
 
       navigate('/');
     } else {
@@ -83,17 +82,20 @@ const Login = () => {
   };
 
 
-  const authHandler = () => {
-    const token = localStorage.getItem('access_token');
+  // const authHandler = () => {
+  //   const token = localStorage.getItem('access_token');
 
-    if (token) {
-      navigate('/');
-    }
-  };
+  //   if (token) {
+  //     navigate('/');
+  //   }
+  // };
 
-  useEffect(() => {
-    authHandler();
-  }, [auth]);
+  // useEffect(() => {
+  //   // authHandler();
+
+  //   console.log(auth);
+
+  // }, [auth]);
 
   return (
     <>
