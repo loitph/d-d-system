@@ -3,21 +3,6 @@ export const DEFAULT_STORAGE = {
   noti: 'Information are calculating!'
 };
 
-export const SLOTS = [
-  's1', 's2', 's3',
-  's4', 's5', 's6',
-  's7', 's8', 's9',
-];
-
-export const LIST_CARD_DEFAULT = [
-  { id: 'item-1', slot: 's1', value: 'Item 01' },
-  { id: 'item-2', slot: 's2', value: 'Item 02' },
-  { id: 'item-3', slot: 's3', value: 'Item 03' },
-  { id: 'item-4', slot: 's4', value: 'Item 04' },
-];
-
-export const CARD_DEFAULT = { id: '', slot: '', value: '' };
-
 export const USER_CONFIG = [
   {
     id: '2c23ded2-5ef2-4b1b-8255-d31f169eb73b',

@@ -14,8 +14,6 @@ const Mover = (props) => {
     setWidgetDragged(paramData);
   };
 
-
-
   return (
     <>
       <div

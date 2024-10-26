@@ -45,7 +45,6 @@ const ModeDisplay = (props) => {
 
   const onEditHandler = (param) => {
     setShowDialogWidget(true);
-    // setModeDisplay(param);
     setWidgetAdjust(param);
   };
 

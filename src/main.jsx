@@ -38,14 +38,6 @@ const router = createBrowserRouter([
       },
     ]
   },
-  {
-    path: "/login",
-    element: <Login />
-  },
-  {
-    path: "/register",
-    element: <Register />
-  },
 ]);
 
 createRoot(document.getElementById('root')).render(

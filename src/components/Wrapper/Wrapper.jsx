@@ -1,16 +1,15 @@
 import './Wrapper.css';
 
 import { useContext, useEffect, useState } from 'react';
-import { ADD_SLOT, ADD_WIDGET, SLOTS } from '../../constant/mockup';
+import { ADD_SLOT } from '../../constant/mockup';
 import { StoreContext } from '../../contexts/Store.context';
 import Greeting from '../Greeting/Greeting';
 import ModeDisplay from '../ModeDisplay/ModeDisplay';
-import AddWidget from '../AddWidget/AddWidget';
 import AddBoardSlot from '../AddBoardSlot/AddBoardSlot';
 import { MinusOutlined } from '@ant-design/icons';
 
 
-const Wrapper = ({ onSendOrder }) => {
+const Wrapper = () => {
   const { widgetDragged, setWidgetDragged } = useContext(StoreContext);
   const { userConfig, setUserConfig } = useContext(StoreContext);
   const [ board, setBoard ] = useState([]);
@@ -71,8 +70,6 @@ const Wrapper = ({ onSendOrder }) => {
     items.push(ADD_SLOT);
 
     setBoard(items);
-
-    // console.log(userConfig);
 
     setVisibleItems([...userConfig.widget]);
   }, [userConfig]);

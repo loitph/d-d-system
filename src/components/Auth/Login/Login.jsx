@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import './Login.css'
 import { fakeLogin } from '../../../services/fakeAPI.service';
 import { message, notification } from 'antd';
@@ -80,22 +80,6 @@ const Login = () => {
     }
     return valid;
   };
-
-
-  // const authHandler = () => {
-  //   const token = localStorage.getItem('access_token');
-
-  //   if (token) {
-  //     navigate('/');
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   // authHandler();
-
-  //   console.log(auth);
-
-  // }, [auth]);
 
   return (
     <>

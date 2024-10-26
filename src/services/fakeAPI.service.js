@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BLANK_USER, BLANK_USER_CONFIG, USER_CONFIG, USER_DATA } from "../constant/mockup";
+import { USER_CONFIG, USER_DATA } from "../constant/mockup";
 
 // Token generation function using the Web Crypto API (works in browser)
 const generateToken = async (inputText) => {

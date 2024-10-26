@@ -1,7 +1,7 @@
 import './Hall.css';
 
 import { useContext, useEffect, useState } from 'react';
-import { ADD_WIDGET, LIST_CARD_DEFAULT, SLOTS } from '../../constant/mockup';
+import { ADD_WIDGET } from '../../constant/mockup';
 import { StoreContext } from '../../contexts/Store.context';
 import Greeting from '../Greeting/Greeting';
 import ModeDisplay from '../ModeDisplay/ModeDisplay';
